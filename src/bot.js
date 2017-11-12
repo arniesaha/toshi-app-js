@@ -926,7 +926,7 @@ function setTXStatus(session, username, txStatus){
           
           var txHashExists = (snapshot.val() !== null);
 
-          if(!txHashExists){
+          if(!txHashExists && typeof session.get('txHas') !== undefined){
             console.log("setting new TxHash: "+session.get('txHash'))
 
             if(txStatus == "requested"){
