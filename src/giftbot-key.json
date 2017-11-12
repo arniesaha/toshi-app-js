@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "collabot-toshi",
+  "private_key_id": "69c95480de8bb3ad3ffad5142fb046eeb79eb0bf",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCdi5iyEtGLfWgw\npf/npHR/sJ5S/R3Hcx0jJcxTb5uiAWlfT/sBfh3ac4vVcVSFac/+GeeZG1p3kxn1\nnlvquAH8d1oSHIMMDNzSlz9XXtGAaRMsAk4CFE/NP1T+vu8v9+CysLgfQ6ATrMWK\n+TDY1GO9knImB7E3Y9A4MdMOPB8asugKx7P2ty0R2xtlTuKatu1nMXDZLlzV9Svf\nr5uE6YGckKkxGVfEq6fMr+5RqT9aYY9tOBzMiBuXD46p3uuzIV1HcTwRejOJsW1j\n0JGU2LW6EZtJy8LDcI0LjHnrWcc10FH9tKCPAQxu5iWcmx1bUvi+3sxww1aJcS1P\nNOQlbNJHAgMBAAECggEAEMge8tEIWyh3ob78/GrLMhLZOpPVyToc33KWSkj4NhCa\nbdmyLh2GBpAKVCknTLLRwgp2XhvIzjXwLPa6ac1CAOehw44f83enShNsXt0tydTn\ngueX8abCPWXCowQprF1mJQKoCkSE17OuszgKGP6+xSHFYQGuweyy8Fl2VuzWj1xW\nanF82ZgbppBH5tJ0sYMP+RugX+Zxc5V5jSplu8XcvrWb2ladqtv8fKrg0G6YmI9o\nF8yzC9GunwYlELSYvyyywQj/m7f5PnlxXpG/c7dkjNt1pShwYB3k4ladhagBR3wS\nFrO2IrTHfhzV37nwsQaR5//GrzcIM4BRlfQNwk/10QKBgQDZR02RDbazeogNxu33\nXem78iX/UcvBG8rV4iut2rqWUg3eij9UZlJ4tswBFuUP3hjgwzBKLTMTCSXVX4bz\n4Rp4mhyF98BSOfxaPi5w5DPXRSsBMvF3/EHGydlrWPYkbTkCF61HqVtbFnul0wVK\n/Oje+7PrxwPMvFSBPgX5dgXCfwKBgQC5nyPD904ZMffoposI8THpGWHJMJd5leaG\nvTunUtkNqt6FkMuQiMoUxLle5e5t7i8P3xB7lUtWDQXrpSdAnuQrIbvOddvgHxfV\n3o+I5FGwf66DejD2c31cO3vV571opGJNMXfcFyf6NuxjYi4QdDleDzwWfxLW5pRK\nJUrMFpF8OQKBgEwbecQRdamwhe+terVnI/Q9ganJUQG3Znk82+ft8eWtoEYPTteV\nb9Xw0cyf5GSGe1hfho60/mrwjVwMNg0/EDKmaM9UVP14ajiCB2prxOzmwYWN/p70\nsWWcVpgPdUiVKZ7eBEhRvjpNycnv/K6joD5bFE7GS0JvxXnv68/R03qpAoGAZ8x+\nC4+3tI8kuoynIxD9gAQZkpABpJQWnTIksaS6i9IJLVeS/fgASSzZHCAn/IE8//sV\nFIaf4jbWILfyA0jW/ueWRhXSJro8cfRK/5nttG0yAYPK7YYXjAQXc75rRKDn95K6\nG/E3AczE066LY9gaXGbYixv0RQgb1HqWIRpdsMECgYEAozVgLpO+aIPMA3F5YIZz\nJYyXfP2Yaycv0feeVpup1kNUcqvh5NMswIHgFmPsGkOPIL5hn9wbivsgUix+Gy3h\n+vTs74mpIB7+gv0iCJ9kAoW5fN49IWfOoaTt0wfnUL9QvCWLa7rYDEmxFLUSrnM3\nVns/J8//51GFAespxI+d4Ec=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-g5f59@collabot-toshi.iam.gserviceaccount.com",
+  "client_id": "113470236172123010410",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-g5f59%40collabot-toshi.iam.gserviceaccount.com"
+}
