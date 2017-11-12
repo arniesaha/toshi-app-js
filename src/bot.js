@@ -1025,7 +1025,17 @@ function userConfirmed(session) {
   // var db = admin.database();
   var individualRef = db.ref("users/"+session.user.toshi_id+"/individual/"+userDetails['username']);
 
-  individualRef.update(userDetails);
+  individualRef.once("value", function(snapshot) {
+    var exists = (snapshot.val() !== null);
+
+    if(exists){
+      individualRef.set(userDetails);
+    }else{
+      individualRef.update(userDetails);
+    }
+  })
+
+  
 
 
   //when you want to set other non-default properties, you must construct the SOFA instance yourself
