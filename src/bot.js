@@ -926,16 +926,14 @@ function setTXStatus(session, username, txStatus){
           
           var txHashExists = (snapshot.val() !== null);
 
-          if(!txHashExists && typeof session.get('txHas') !== undefined){
-            console.log("setting new TxHash: "+session.get('txHash'))
+          if(!txHashExists && typeof session.get('txHash') !== undefined){
+            // console.log("setting new TxHash: "+session.get('txHash'))
 
             if(txStatus == "requested"){
               // var txRef = db.ref("users/"+session.user.toshi_id+"/individual/"+username+"/txs/"+i+"/txHash")
               txHashRef.set(session.get('txHash'))
             }
         
-          }else{
-            console.log('txHash path is not empty')
           }
 
         })
@@ -986,15 +984,13 @@ function setTXStatus(session, username, txStatus){
                 
                 var txHashExists = (snapshot.val() !== null);
 
-                if(!txHashExists){
+                if(!txHashExists && typeof session.get('txHash') !== undefined){
 
-                  if(txStatus == "settled"){
+                  if(txStatus == "requested"){
                     // var txRef = db.ref("users/"+session.user.toshi_id+"/individual/"+username+"/txs/"+i+"/txHash")
                     txHashRef.set(session.get('txHash'))
                   }
               
-                }else{
-                  console.log('txHash path is not empty')
                 }
 
               })
