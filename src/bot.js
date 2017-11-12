@@ -12,8 +12,6 @@ let bot = new Bot()
 let addressesToWatch = []
 
 
-// let filter = web3.eth.filter('latest')
-
 var serviceAccount = require("./giftbot-key.json")
 
 
@@ -28,10 +26,6 @@ var request = require('request')
 
 let filter = web3.eth.filter('latest')
 
-// var toshi_id
-// var settleAmount
-// var username
-// var txHash
 var localSession
 
 filter.watch((error, result) => {
@@ -82,20 +76,12 @@ bot.onEvent = function(session, message) {
       onPayment(session, message)
       break
     case 'PaymentRequest':
-      // console.log("payment req event");
       onPaymentRequest(session, message)
-      // welcome(session)
       break
   }
 }
 
 function onMessage(session, message) {
-  // var withNoDigits = message.body.replace(/[0-9]/g, '');
-  // console.log("message: "+message.body)
-  // if(message.body.includes('confirmed') || message.body.includes('amount')){
-    
-
-  // }
 
   switch(session.get('action')){
 
@@ -364,16 +350,6 @@ function onPayment(session, message) {
             'body': session.get('username') + " has cleared their dues! Click below to fetch into your wallet",
             'controls': controls
         }));
-
-        /*
-        var individualRef = db.ref("users/"+session.user.toshi_id+"/individual/"+session.get('username'));
-          
-          individualRef.on("value", function(snapshot) {
-            console.log(snapshot.val());
-          }, function (errorObject) {
-            console.log("The read failed: " + errorObject.code);
-          });
-        */
         
   
     } else if (message.status == 'error') {
@@ -402,68 +378,29 @@ function processPayment(session, type) {
 
 }
 
-// function paynow(session) {
-//   // console.log(session);
 
-//   console.log("amount", session.data.txAmount)
-
-//   // use a cache age of 10 seconds
-//   Fiat.fetch().then((toEth) => {
-//     //convert 50 US dollars to ETH.
-//     let ethVal = toEth.INR(session.data.txAmount)
-//     // console.log(ethVal)
-//     // session.sendEth(giftAmount)
-//     // request 2 ETH
-//     session.sendEth(ethVal, session.data.txDescription);
-
-//   })
-
-  
-// }
-
-// function onPaymentRequest(session, message) {
-  
-//   // console.log(message);
-
-// }
 
 // STATES
 
 function welcome(session) {
-  sendMessage(session, `Hello there! I'm Splitty! \nI can help you settle daily expenses with friends, roommates, figuring out costs for a group vacation or even when either one spots one another!`)
+  sendMessage(session, `Hello there! I'm splitman 😃!! \nI can help you settle daily expenses with friends, roommates, figuring out costs for a group vacation or even when either one spots one another!`)
   sendMessage(session, `I can also help settle recurring individual utility bills like your newspaper, maid, gardener, milk, driver, dry cleaners and more.`);
-  // console.log(session)
-  // console.log(session.data.paymentAddress);
-  // console.log(bot.client.config.paymentAddress);
-  // console.log("EthBal: "+EthService.getBalance(session.data.paymentAddress));
 }
 
 
-function addGroupType(session) {
-
-  var usersRef = db.ref("users/"+session.user.toshi_id);
-
-  //Create userProfile JSON for Firebase
-  var profileArray = {};
-  var groupArray = {};
-  profileArray['username'] = session.user.username;
-  profileArray['name'] = session.user.name;
-  profileArray['paymentAddress'] = session.user.payment_address;
-
-  usersRef.update(profileArray);
-      
+function addGroupType(session) {    
 
   let controls = [
-      {type: "button", label: "Apartment", value: "addGroupName"},
-      {type: "button", label: "House", value: "addGroupName"},
-      {type: "button", label: "Trip", value: "addGroupName"},
-      {type: "button", label: "Other", value: "addGroupName"},
-      {type: "button", label: "Existing Group", value: "searchExistingGroup"}
+      {type: "button", label: "Apartment", value: "reset"},
+      {type: "button", label: "House", value: "reset"},
+      {type: "button", label: "Trip", value: "reset"},
+      {type: "button", label: "Other", value: "reset"},
+      {type: "button", label: "Existing Group", value: "reset"}
     ]
 
 
   session.reply(SOFA.Message({
-    body: "Select the type of the group or add against your existing group.",
+    body: "Group feature will be coming soon! Stay tuned!",
     controls: controls,
     showKeyboard: false,
   }))
@@ -484,10 +421,6 @@ function addGroupName(session, grouptype) {
   session.set('grouptype', grouptype)
 }
 
-function searchGroup(session) {
-
-}
-
 
 function addIndividual(session) {
 
@@ -502,10 +435,15 @@ function addIndividual(session) {
 
   usersRef.update(profileArray);
 
+  let controls = [
+    {type: "button", label: "🚫", value: "reset"}
+  ]
+
   //when you want to set other non-default properties, you must construct the SOFA instance yourself
   session.reply(
     SOFA.Message({
       body: "Could you tell me the username of the person you want to request the payment from?",
+      controls, controls,
       showKeyboard: true
     })
   );
@@ -521,7 +459,7 @@ function selectIndividual(session) {
   let controls = [
       {type: "button", label: "Add New", value: "addIndividual"},
       {type: "button", label: "Existing", value: "searchIndividual"},
-      {type: "button", label: "Not Now", value: "reset"}
+      {type: "button", label: "🚫", value: "reset"}
     ]
 
 
@@ -927,13 +865,9 @@ function setTXStatus(session, username, txStatus){
           var txHashExists = (snapshot.val() !== null);
 
           if(!txHashExists && typeof session.get('txHash') != 'undefined'){
-            console.log("setting new TxHash: "+session.get('txHash'))
-            console.log("txStatus: "+txStatus)
-            if(txStatus == "settled"){
-              // var txRef = db.ref("users/"+session.user.toshi_id+"/individual/"+username+"/txs/"+i+"/txHash")
+            
               txHashRef.set(session.get('txHash'))
-            }
-        
+            
           }
 
         })
@@ -972,11 +906,7 @@ function setTXStatus(session, username, txStatus){
               var txStatusRef = db.ref("users/"+userObject.toshi_id+"/individual/"+session.user.username+"/txs/"+i+"/"+"txStatus")
               txStatusRef.set(txStatus)
 
-              // if(txStatus == "settled"){
-              //   var txRef = db.ref("users/"+userObject.toshi_id+"/individual/"+session.user.username+"/txs/"+i+"/txHash")
-              //   txRef.set(session.get('txHash'))
-              // }
-
+          
               var txHashRef = db.ref("users/"+userObject.toshi_id+"/individual/"+session.user.username+"/txs/"+i+"/txHash")
               txHashRef.once("value", function(snapshot){
 
@@ -985,13 +915,8 @@ function setTXStatus(session, username, txStatus){
                 var txHashExists = (snapshot.val() !== null);
 
                 if(!txHashExists && typeof session.get('txHash') != 'undefined'){
-                  console.log("setting new TxHash: "+session.get('txHash'))
-                  console.log("txStatus: "+txStatus)
-                  if(txStatus == "settled"){
-                    // var txRef = db.ref("users/"+session.user.toshi_id+"/individual/"+username+"/txs/"+i+"/txHash")
                     txHashRef.set(session.get('txHash'))
-                  }
-              
+                
                 }
 
               })
