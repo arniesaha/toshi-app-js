@@ -1029,9 +1029,9 @@ function userConfirmed(session) {
     var exists = (snapshot.val() !== null);
 
     if(exists){
-      individualRef.set(userDetails);
-    }else{
       individualRef.update(userDetails);
+    }else{
+      individualRef.set(userDetails);
     }
   })
 
