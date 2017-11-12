@@ -90,7 +90,12 @@ bot.onEvent = function(session, message) {
 }
 
 function onMessage(session, message) {
-  console.log(session);
+  // var withNoDigits = message.body.replace(/[0-9]/g, '');
+  // console.log("message: "+message.body)
+  // if(message.body.includes('confirmed') || message.body.includes('amount')){
+    
+
+  // }
 
   switch(session.get('action')){
 
@@ -302,17 +307,25 @@ function onCommand(session, command) {
     case 'no':
       userCancelled(session)
       break
-    // case 'getMoneyFromBot':
-    //   getMoneyFromBot(session, command.content.body)
-    //   break
+    case 'getMoneyFromBot':
+      getMoneyFromBot(session, command.content.body)
+      break
     }
 }
 
-// function getMoneyFromBot(session){
-//     console.log("body: "+command.content.body)
+function getMoneyFromBot(session, txAmount){
+    // var thenum = message.body.replace( /^\D+/g, ''); 
+    console.log('amt: '+txAmount); 
+    Fiat.fetch().then((toEth) => {
+      //convert 50 US dollars to ETH.
+      let ethVal = toEth.INR(txAmount)
+      
+      session.sendEth(ethVal, function(session, error, result) {
+        console.log(error)
+      });
 
-//     console.log("session: "+session)
-// }
+    })
+}
 
 function onPayment(session, message) {
  
@@ -342,14 +355,14 @@ function onPayment(session, message) {
 
         // requestPayment(session, session.get('toshi_id'), session.get('settleAmount'), "Settlement dues from "+session.user.username, session.get('paymentAddress'))   
 
-        // let controls = [
-        //   {type: "button", label: "Yes", value: "getMoneyFromBot"},
-        //   {type: "button", label: "Later", value: "reset"},
-        // ]
+        let controls = [
+          {type: "button", label: session.get('settleAmount'), value: "getMoneyFromBot"},
+          // {type: "button", label: "Later", value: "reset"},
+        ]
 
         bot.client.send(session.get('toshi_id'), SOFA.Message({
-            'body': session.get('username') + " has cleared their dues of amount: "+session.get('settleAmount')+"! Do you want to accept?",
-            // 'controls': controls
+            'body': session.get('username') + " has cleared their dues! Click below to fetch into your wallet",
+            'controls': controls
         }));
 
         /*
@@ -896,31 +909,33 @@ function setTXStatus(session, username, txStatus){
     var exists = (snapshot.val() !== null);
 
     if(exists){
-      console.log("data", snapshot.val());
+      // console.log("data", snapshot.val());
       var jsonData = snapshot.val();
      
     
       for(var i in jsonData){
      
-        var txRef = db.ref("users/"+session.user.toshi_id+"/individual/"+username+"/txs/"+i+"/"+"txStatus")
-        txRef.set(txStatus)
+        var txStatusRef = db.ref("users/"+session.user.toshi_id+"/individual/"+username+"/txs/"+i+"/"+"txStatus")
+        txStatusRef.set(txStatus)
 
-        var txRef = db.ref("users/"+session.user.toshi_id+"/individual/"+username+"/txs/"+i+"/txHash")
-        txRef.once("value", function(snapshot){
+        var txHashRef = db.ref("users/"+session.user.toshi_id+"/individual/"+username+"/txs/"+i+"/txHash")
+        txHashRef.once("value", function(snapshot){
 
 
         // console.log("setTxHas", snapshot.val())
           
-          var exists = (snapshot.val() !== null);
+          var txHashExists = (snapshot.val() !== null);
 
-          if(!exists){
+          if(!txHashExists){
             console.log("setting new TxHash: "+session.get('txHash'))
 
-            if(txStatus == "settled"){
-              var txRef = db.ref("users/"+session.user.toshi_id+"/individual/"+username+"/txs/"+i+"/txHash")
-              txRef.set(session.get('txHash'))
+            if(txStatus == "requested"){
+              // var txRef = db.ref("users/"+session.user.toshi_id+"/individual/"+username+"/txs/"+i+"/txHash")
+              txHashRef.set(session.get('txHash'))
             }
         
+          }else{
+            console.log('txHash path is not empty')
           }
 
         })
@@ -956,28 +971,30 @@ function setTXStatus(session, username, txStatus){
                 
             for(var i in jsonData){
            
-              var txRef = db.ref("users/"+userObject.toshi_id+"/individual/"+session.user.username+"/txs/"+i+"/"+"txStatus")
-              txRef.set(txStatus)
+              var txStatusRef = db.ref("users/"+userObject.toshi_id+"/individual/"+session.user.username+"/txs/"+i+"/"+"txStatus")
+              txStatusRef.set(txStatus)
 
               // if(txStatus == "settled"){
               //   var txRef = db.ref("users/"+userObject.toshi_id+"/individual/"+session.user.username+"/txs/"+i+"/txHash")
               //   txRef.set(session.get('txHash'))
               // }
 
-              var txRef = db.ref("users/"+userObject.toshi_id+"/individual/"+session.user.username+"/txs/"+i+"/txHash")
-              txRef.once("value", function(snapshot){
+              var txHashRef = db.ref("users/"+userObject.toshi_id+"/individual/"+session.user.username+"/txs/"+i+"/txHash")
+              txHashRef.once("value", function(snapshot){
 
-                console.log("setTxHas", snapshot.val())
+                // console.log("setTxHas", snapshot.val())
                 
-                var exists = (snapshot.val() !== null);
+                var txHashExists = (snapshot.val() !== null);
 
-                if(!exists){
+                if(!txHashExists){
 
                   if(txStatus == "settled"){
-                    var txRef = db.ref("users/"+session.user.toshi_id+"/individual/"+username+"/txs/"+i+"/txHash")
-                    txRef.set(session.get('txHash'))
+                    // var txRef = db.ref("users/"+session.user.toshi_id+"/individual/"+username+"/txs/"+i+"/txHash")
+                    txHashRef.set(session.get('txHash'))
                   }
               
+                }else{
+                  console.log('txHash path is not empty')
                 }
 
               })
