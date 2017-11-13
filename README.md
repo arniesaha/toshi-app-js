@@ -34,9 +34,8 @@ The current bot can:
 
   e.g. User and TX Structure in Firebase:
   key: 0x045f6c5770c23656b7483f9cf74d969a4a4b01f5
-  
-  ```
-  value: {
+
+  ``` {
   "individual" : {
     "arnabq6" : {
       "payment_address" : "0xf0d0e26ae4e8e3b58941974f787695094ddf2288",
@@ -69,10 +68,7 @@ The current bot can:
   "name" : "arnabnexus6",
   "paymentAddress" : "0x8f189bef6801bf9beb160cb2686b84ace1eb6cad",
   "username" : "arnabnexus6"
-}
-
-```
-```
+}```
 
 The top level data is your own user data which is stored under the key of toshi_id, and other transaction details stored under individual/<toshi-username> path
 
@@ -87,8 +83,10 @@ The top level data is your own user data which is stored under the key of toshi_
 * The expenses in these groups would be settled based on the number group participants
 * Schedule Later: Feature to schedule payment requests at a later date
 * Reoccuring Payments: Schedule payments you need to make like the newspaper guy, maid, cable etc in a reccuring based on a date of choice or the schedule could be edited later
+* Integration of proffer reputation service to individuals credit history which will impact future usescases with whom you would engage in social commerce
 * Integration of toshi's client conversational UI in a native Android app, with additional features for users to view their transaction history, edit details with additional advanced native UI features like link previews, viewing tables besides the web3 injection.
 * Provide deeplink-invite features to users who are not toshi or the native app 
+
 
 
 >About Me
