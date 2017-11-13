@@ -23,6 +23,7 @@ If yes, then you will be stoked about "Splitman"!
 
 <img src="https://lh3.googleusercontent.com/-Uz1i5fAEVJo/WgkmvUFiwqI/AAAAAAAAGrM/EOumDcVBozgIw2USrFOy79OfGD585m0YgCL0BGAYYCw/h2160/9035047960834344901%253Faccount_id%253D0" width="200px"> <img src="https://lh3.googleusercontent.com/-cfUkxCFgLlc/WgkmuViiitI/AAAAAAAAGq8/Bozv40AfkUwQjbyTyySgDdGPNTWz2HvtQCL0BGAYYCw/h2160/5026396371626723057%253Faccount_id%253D0" width="200px"> <img src="https://lh3.googleusercontent.com/-9D_hg8bp0UU/WgkmtkeSEGI/AAAAAAAAGqs/nV44TELFVukC-U_rJZpPNnNjxV4lODw_ACL0BGAYYCw/h2160/6290967093477318946%253Faccount_id%253D0" width="200px"> <img src="https://lh3.googleusercontent.com/-4qm0psu4HQc/Wgkmsh65gRI/AAAAAAAAGrg/47BEi_MJImk5f5p7_qBNw5xqhi_TyftIgCL0BGAYYCw/h2160/936967223953786355%253Faccount_id%253D0" width="200px">
 
+
 The current bot can:
 
 * Add new toshi users by their username: via https://www.toshi.org/docs/toshi-id-service/
@@ -31,7 +32,8 @@ The current bot can:
 * Settle all pending expenses (either "Pay" or "Request" owed amount)
 
 > System Architecture
-![diagram](docs/images/app-architecture.png)
+
+<img src="https://lh3.googleusercontent.com/-GIt6xXhXi1A/WgnGc-OXOKI/AAAAAAAAGss/j8KiQaVbCWM05zLW_u3-5CxLGsGSuobgACL0BGAYYCw/h349/2017-11-13.jpg" width="400px">
 
 * Base architechture is of toshi's like above, but there's an additional firebase datastore layer for further interactions within the conversational bot.
 * **firebase-admin**<br>
