@@ -34,6 +34,7 @@ The current bot can:
 
   e.g. User and TX Structure in Firebase:
   key: 0x045f6c5770c23656b7483f9cf74d969a4a4b01f5
+  
   ```
   value: {
   "individual" : {
@@ -69,6 +70,8 @@ The current bot can:
   "paymentAddress" : "0x8f189bef6801bf9beb160cb2686b84ace1eb6cad",
   "username" : "arnabnexus6"
 }
+
+```
 ```
 
 The top level data is your own user data which is stored under the key of toshi_id, and other transaction details stored under individual/<toshi-username> path
