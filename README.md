@@ -33,7 +33,7 @@ The current bot can:
 
 > System Architecture
 
-<img src="https://lh3.googleusercontent.com/-GIt6xXhXi1A/WgnGc-OXOKI/AAAAAAAAGss/j8KiQaVbCWM05zLW_u3-5CxLGsGSuobgACL0BGAYYCw/h349/2017-11-13.jpg" width="400px">
+<img src="https://lh3.googleusercontent.com/-GIt6xXhXi1A/WgnGc-OXOKI/AAAAAAAAGss/j8KiQaVbCWM05zLW_u3-5CxLGsGSuobgACL0BGAYYCw/h349/2017-11-13.jpg" width="600px">
 
 * Base architechture is of toshi's like above, but there's an additional firebase datastore layer for further interactions within the conversational bot.
 * **firebase-admin**<br>
