@@ -116,11 +116,7 @@ function onMessage(session, message) {
 
         }else{
 
-          // console.log("search for: "+message.body);
           request('https://identity.service.tokenbrowser.com/v1/user/'+message.body, function (error, response, body) {
-            // console.log('error:', error); // Print the error if one occurred
-            // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-            // console.log('body:', body); // Print the HTML for the Google homepage.
 
             var userObject = JSON.parse(body);
             // console.log(userObject);
@@ -167,8 +163,6 @@ function onMessage(session, message) {
 
     case 'addAmount':
       //when you want to set other non-default properties, you must construct the SOFA instance yourself
-
-      // console.log("addAmount");
 
       if(message.body % 1 == 0){
            session.reply(
