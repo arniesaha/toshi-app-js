@@ -6,10 +6,10 @@ This repository contains the source code for the toshi SOFA app.
 
 Splitman is a toshi app developed for the Proffer Hackathon, which let's you add and settle daily expenses with friends, roommates, figuring out costs for a group activities, and also schedule recurring utility bill expenses like with newspaper, internet, dry cleaning and more. 
 
-Note: There was a conflict with the SEED deployment of the app. You will find two "splitman" apps in the toshi client. 
+> Note: There was a conflict with the SEED deployment of the app. You will find two "splitman" apps in the toshi client. 
 Please use the one deployed under username @arniesaha and not @arnabsaha
 
-<img src = "https://plus.google.com/u/0/photos/albums/p4k0def19tu85j2kmfcju0072if89gacu?pid=6487915284134531170&oid=107029262490628453231" width="200px">
+<img src = "https://lh3.googleusercontent.com/-XPCcUgT0ddM/Wgm0k5OqkGI/AAAAAAAAGsc/0k-FnkXJ-nMm408GmkcEMUxVMW4Y68CYACL0BGAYYCw/h2160/6374528080290022692%253Faccount_id%253D0" width="200px">
 
 > How it will help me?
 
