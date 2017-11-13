@@ -930,39 +930,43 @@ function userConfirmed(session) {
 
   var userDetails = {};
 
-  userDetails['toshi_id'] = session.get('toshi_id');
-  userDetails['username'] = session.get('username');
-  userDetails['payment_address'] = session.get('payment_address');
+  if(session.get('payment_address') != 'undefined' && session.get('username') != 'undefined' && userDetails['toshi_id'] != 'undefined'){
 
-  // console.log(userDetails);
-  
-  // console.log(session.get('grouptype'))
+    userDetails['toshi_id'] = session.get('toshi_id');
+    userDetails['username'] = session.get('username');
+    userDetails['payment_address'] = session.get('payment_address');
 
-  // var db = admin.database();
-  var individualRef = db.ref("users/"+session.user.toshi_id+"/individual/"+userDetails['username']);
+    // console.log(userDetails);
+    
+    // console.log(session.get('grouptype'))
 
-  individualRef.once("value", function(snapshot) {
-    var exists = (snapshot.val() !== null);
+    // var db = admin.database();
+    var individualRef = db.ref("users/"+session.user.toshi_id+"/individual/"+userDetails['username']);
 
-    if(exists){
-      individualRef.update(userDetails);
-    }else{
-      individualRef.set(userDetails);
-    }
-  })
+    individualRef.once("value", function(snapshot) {
+      var exists = (snapshot.val() !== null);
 
-  
+      if(exists){
+          individualRef.update(userDetails);
+      }else{
+          individualRef.set(userDetails);
+      }
 
-
-  //when you want to set other non-default properties, you must construct the SOFA instance yourself
-  session.reply(
-    SOFA.Message({
-      body: "Enter the amount you spent?",
-      showKeyboard: true
     })
-  );
 
-  session.set('action', 'addAmount')
+
+    //when you want to set other non-default properties, you must construct the SOFA instance yourself
+    session.reply(
+      SOFA.Message({
+        body: "Enter the amount you spent?",
+        showKeyboard: true
+      })
+    );
+
+    session.set('action', 'addAmount')
+  }else{
+    sendMessage("Oops! Something went wrong! Try again!")
+  }
 
 }
 

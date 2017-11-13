@@ -6,6 +6,11 @@ This repository contains the source code for the toshi SOFA app.
 
 Splitman is a toshi app developed for the Proffer Hackathon, which let's you add and settle daily expenses with friends, roommates, figuring out costs for a group activities, and also schedule recurring utility bill expenses like with newspaper, internet, dry cleaning and more. 
 
+> Note: There was a conflict with the SEED deployment of the app. You will find two "splitman" apps in the toshi client. 
+Please use the one deployed under username @arniesaha and not @arnabsaha
+
+<img src = "https://plus.google.com/u/0/photos/albums/p4k0def19tu85j2kmfcju0072if89gacu?pid=6487915284134531170&oid=107029262490628453231" width="200px">
+
 > How it will help me?
 
 * Do you have pending tabs with friends or roommates that you have a difficult time to confront or account for?
@@ -67,8 +72,7 @@ The current bot can:
   },
   "name" : "arnabnexus6",
   "paymentAddress" : "0x8f189bef6801bf9beb160cb2686b84ace1eb6cad",
-  "username" : "arnabnexus6"
-}```
+  "username" : "arnabnexus6" } ```
 
 The top level data is your own user data which is stored under the key of toshi_id, and other transaction details stored under individual/<toshi-username> path
 
@@ -76,7 +80,7 @@ The top level data is your own user data which is stored under the key of toshi_
 
 
 
->To-do/Future for Splitman:
+>To-Dd/Roadmap for Splitman:
 
 * Implement "Group" functionality 
 * Individuals can add each other in groups (e.g. friends on a vacation trip, more than 2 roommates etc) could create groups and add each other to it
