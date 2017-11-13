@@ -805,7 +805,7 @@ function requestPayment(session, toshi_id, txAmount, txDescription, paymentAddre
     // console.log(ethVal);
     // session.sendEth(giftAmount)
     //convert ether to wei
-    var weiValue = unit.toWei(ethVal, 'ether');
+    var weiValue = unit.toWei(ethVal, 'ether').toFixed(12);
     // console.log("weiVal", weiValue);
 
     bot.client.send(toshi_id, SOFA.PaymentRequest({

@@ -1,5 +1,5 @@
 # Splitman - Toshi SOFA app
-This repository contains the source code for the toshi SOFA app.
+This repository contains the source code for splitman - a toshi app.
 
 ## What's going on here?
 > What's Splitman?
@@ -80,7 +80,7 @@ The top level data is your own user data which is stored under the key of toshi_
 
 
 
->To-Dd/Roadmap for Splitman:
+>To-Do/Roadmap for Splitman:
 
 * Implement "Group" functionality 
 * Individuals can add each other in groups (e.g. friends on a vacation trip, more than 2 roommates etc) could create groups and add each other to it
